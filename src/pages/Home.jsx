@@ -5,7 +5,7 @@ const Home = ({ setToken }) => {
     const [favorites, setFavorites] = useState([]);
     const [cryptos, setCryptos] = useState([]);
 
-    // 🔹 Obtener precios en tiempo real
+   
     useEffect(() => {
         const fetchCryptos = async () => {
             try {
@@ -18,11 +18,11 @@ const Home = ({ setToken }) => {
         };
 
         fetchCryptos();
-        const interval = setInterval(fetchCryptos, 60000); // Actualiza cada minuto
+        const interval = setInterval(fetchCryptos, 60000); 
         return () => clearInterval(interval);
     }, []);
 
-    // 🔹 Obtener criptos favoritas del usuario
+   
     const fetchFavorites = async () => {
         if (!userId) return;
         try {
@@ -38,7 +38,7 @@ const Home = ({ setToken }) => {
         <div>
             <h1>Mis Criptomonedas Favoritas</h1>
 
-            {/* 🔹 Ingresar ID de usuario para ver favoritas */}
+            {}
             <input
                 type="text"
                 placeholder="Ingresa tu ID de usuario"
@@ -47,7 +47,7 @@ const Home = ({ setToken }) => {
             />
             <button onClick={fetchFavorites}>Ver Favoritas</button>
 
-            {/* 🔹 Mostrar criptomonedas favoritas */}
+            {}
             <h2>Favoritas</h2>
             <ul>
                 {favorites.length > 0 ? (

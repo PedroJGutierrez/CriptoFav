@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
-import User from "../models/User.js"; // Asegúrate de que el modelo está correcto
+import User from "../models/User.js"; 
 
 dotenv.config();
 
@@ -18,15 +18,15 @@ const connectDB = async () => {
         });
         console.log("✅ MongoDB conectado correctamente");
 
-        // 🔹 Verificar si el usuario administrador ya existe
+      
         const adminExists = await User.findOne({ username: "admin" });
         if (!adminExists) {
             console.log("⚡ Creando usuario administrador...");
 
-            const hashedPassword = await bcrypt.hash("admin123", 10); // Hashear contraseña
+            const hashedPassword = await bcrypt.hash("admin123", 10); 
             const adminUser = new User({
                 username: "admin",
-                password: hashedPassword, // Guardar contraseña hasheada
+                password: hashedPassword, 
                 isAdmin: true,
             });
 

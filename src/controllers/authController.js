@@ -33,21 +33,21 @@ export const login = async (req, res) => {
       const { username, password } = req.body;
       console.log("🔹 Intentando login:", { username });
 
-      // Buscar usuario en la base de datos
+     
       const userData = await User.findOne({ username }).select("+password");
 
       if (!userData) {
           return res.status(401).json({ error: "Usuario no encontrado" });
       }
 
-      // Convertimos el documento en una instancia de User para recuperar sus métodos
+     
       const user = new User(userData.toObject());
 
       console.log("Usuario encontrado:", user);
       console.log("Es una instancia de Mongoose?", user instanceof User);
       console.log("Métodos disponibles:", Object.keys(Object.getPrototypeOf(user)));
 
-      // Verificar contraseña
+     
       const isMatch = await user.matchPassword(password);
 
       if (!username || !password) {
@@ -57,7 +57,7 @@ export const login = async (req, res) => {
           return res.status(401).json({ error: "Credenciales incorrectas" });
       }
 
-      // Generar token JWT
+   
       const token = jwt.sign(
           { id: user._id, username: user.username },
           process.env.JWT_SECRET,
@@ -99,7 +99,7 @@ export const register = async (req, res) => {
   } catch (error) {
       console.error("❌ Error en el registro:", error);
 
-      // Manejo específico de error de usuario duplicado
+     
       if (error.code === 11000) {
           return res.status(400).json({ error: "El nombre de usuario ya está en uso" });
       }

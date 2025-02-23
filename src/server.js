@@ -16,15 +16,15 @@ const __dirname = path.dirname(__filename);
 app.use(express.json());
 app.use(cors());
 
-// 🔹 Rutas de la API
+
 import authRoutes from "./routes/authRoutes.js";
 import cryptoRoutes from "./routes/cryptoRoutes.js";
 
 app.use("/api/auth", authRoutes);
 app.use("/api/crypto", cryptoRoutes);
 
-// **📌 Aquí aseguramos que busca en la carpeta correcta**
-const clientBuildPath = path.join(__dirname, "../client/build"); // Ajusta la ruta
+
+const clientBuildPath = path.join(__dirname, "../client/build"); 
 app.use(express.static(clientBuildPath));
 
 app.get("*", (req, res) => {

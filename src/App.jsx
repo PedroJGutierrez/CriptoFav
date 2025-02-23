@@ -82,7 +82,7 @@ function App() {
           params: {
             q: "cryptocurrency",
             sortBy: "publishedAt",
-            apiKey: process.env.REACT_APP_NEWSAPI_KEY // Reemplaza con tu clave de API
+            apiKey: process.env.REACT_APP_NEWSAPI_KEY 
           },
         });
         setNews(response.data.articles.slice(0, 5));
