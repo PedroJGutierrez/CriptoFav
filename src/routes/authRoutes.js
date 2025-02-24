@@ -52,7 +52,7 @@ router.post("/add-favorite", async (req, res) => {
     }
 });
 
-// Quitar cripto favorita
+
 router.post("/remove-favorite", async (req, res) => {
     try {
         const { userId, cryptoId } = req.body;
